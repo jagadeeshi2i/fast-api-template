@@ -17,3 +17,55 @@ pytest = "^8.0.1"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.interrogate]
+ignore-init-method = true
+ignore-init-module = true
+ignore-magic = false
+ignore-semiprivate = false
+ignore-private = false
+ignore-property-decorators = false
+ignore-module = false
+ignore-nested-functions = false
+ignore-nested-classes = true
+ignore-setters = false
+fail-under = 0
+exclude = ["setup.py", "docs", "build"]
+ignore-regex = ["^get$", "^mock_.*", ".*BaseClass.*"]
+# possible values: 0 (minimal output), 1 (-v), 2 (-vv)
+verbose = 0
+quiet = false
+whitelist-regex = []
+color = true
+omit-covered-files = false
+
+[tool.ruff]
+
+src = ["src"]
+target-version = "py310"
+line-length = 108
+
+lint.select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "S",  # flake8-bandit
+    "C",  # flake8-comprehensions
+    "B",  # flake8-bugbear
+    "UP", # automatically upgrade syntax for newer versions of the language
+]
+
+
+lint.ignore = [
+    "B904",  # TODO: Within an except clause, raise exceptions with `raise ... from err` or `raise ... from None` to distinguish them from errors in exception handling
+    "B008",  # do not perform function calls in argument defaults. Ignored to allow dependencies in FastAPI
+]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["E402"]  # Ignore `E402` (import violations) in all `__init__.py` files
+"src/tests/*" = ["S101"]  # Allow the use of ´assert´ in tests
+
+[tool.codespell]
+skip = "*.lock,*.cjs"
+ignore-words-list = "ignored-word"

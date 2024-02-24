@@ -1,12 +1,15 @@
-from sqlalchemy import Column, DateTime, ForeignKey, Integer, String
+from sqlalchemy import Column, DateTime, Integer, String
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
-
-from app.db.base import Base
+from src.db.base import Base
 
 
 class Organization(Base):
-    __tabename__ = "organization"
+    """
+    Represents an organization entity.
+    """
+
+    __tablename__ = "organization"
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, index=True)

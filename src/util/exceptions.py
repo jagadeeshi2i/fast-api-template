@@ -14,6 +14,4 @@ async def exception_handler(request: Request, call_next):
         return await call_next(request)
     except FastAPIError as exc:
         logger.error({"error": type(exc).__name__, "message": exc, "at": traceback.format_exc()})
-        return JSONResponse(
-            content={"error": type(exc).__name__, "message": str(exc)}, status_code=400
-            )
+        return JSONResponse(content={"error": type(exc).__name__, "message": str(exc)}, status_code=400)

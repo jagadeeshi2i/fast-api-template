@@ -2,12 +2,11 @@ import logging.config
 from os import path
 
 from fastapi import FastAPI
-
-from app.api.user import router as UserApiRouter
-from app.util.exceptions import exception_handler
+from src.api.user import router as UserApiRouter
+from src.util.exceptions import exception_handler
 
 # TODO: complete logging configuration
-log_file_path = path.join(path.dirname(__file__), 'logging.conf')
+log_file_path = path.join(path.dirname(__file__), "logging.conf")
 logging.config.fileConfig(log_file_path, disable_existing_loggers=False)
 
 app = FastAPI(
@@ -16,7 +15,6 @@ app = FastAPI(
     version="0.1",
 )
 
-app.middleware('http')(exception_handler)
+app.middleware("http")(exception_handler)
 
 app.include_router(UserApiRouter, prefix="/api/v1/user", tags=["user"])
-

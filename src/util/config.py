@@ -1,21 +1,29 @@
 import os
 
 import yaml
-from pydantic import EmailStr, PostgresDsn
+from pydantic import PostgresDsn
 from pydantic_settings import BaseSettings
 
-yaml_settings = dict()
+yaml_settings = {}
 
 pwd = os.path.dirname(os.path.realpath(__file__))
 with open(os.path.join(pwd, ".../settings.yaml")) as f:
-    yaml_settings.update(yaml.load(f, yaml.FullLoader))
+    yaml_settings.update(yaml.safe_load(f))
 
 
 class AppSettings(BaseSettings):
+    """
+    Represents the application settings.
+    """
+
     app_name: str = "FastAPI Demo"
 
 
 class Settings(BaseSettings):
+    """
+    Represents the settings for the application.
+    """
+
     SQLALCHEMY_DATABASE_URI: PostgresDsn
 
 

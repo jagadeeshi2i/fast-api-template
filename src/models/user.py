@@ -1,11 +1,14 @@
 from sqlalchemy import Column, DateTime, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
-
-from app.db.base import Base
+from src.db.base import Base
 
 
 class User(Base):
+    """
+    Represents a user in the system.
+    """
+
     __tabename__ = "user"
 
     id = Column(Integer, primary_key=True, index=True)

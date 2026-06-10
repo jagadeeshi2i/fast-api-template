@@ -18,7 +18,7 @@ class UserReq(PydanticBaseModel):
     first_name: str = Field(..., description="User first name")
     last_name: str = Field(..., description="User last name")
     password: str = Field(..., description="User password")
-    role: str | None = Field(None, description="User role")
+    role: str | None = Field(None, description="User role")    
 
 
 UserReq.model_rebuild()

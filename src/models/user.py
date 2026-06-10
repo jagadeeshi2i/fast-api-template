@@ -9,7 +9,7 @@ class User(Base):
     Represents a user in the system.
     """
 
-    __tabename__ = "user"
+    __tablename__ = "user"
 
     id = Column(Integer, primary_key=True, index=True)
     primary_email = Column(String, unique=True, index=True)

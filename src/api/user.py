@@ -9,12 +9,7 @@ router = APIRouter()
 
 
 @router.post(
-    "/users",
-    responses={
-        201: {"model": JSONResponse, "description": "User created successfully"},
-        401: {"model": JSONResponse, "description": "Unauthorized"},
-    },
-    tags=["User"],
+    "/",
     summary="Add user",
 )
 async def create_user(

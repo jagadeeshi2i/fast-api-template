@@ -17,4 +17,4 @@ app = FastAPI(
 
 app.middleware("http")(exception_handler)
 
-app.include_router(UserApiRouter, prefix="/api/v1/user", tags=["user"])
+app.include_router(UserApiRouter, prefix="/api/v1/users", tags=["users"])

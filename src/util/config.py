@@ -7,7 +7,7 @@ from pydantic_settings import BaseSettings
 yaml_settings = {}
 
 pwd = os.path.dirname(os.path.realpath(__file__))
-with open(os.path.join(pwd, ".../settings.yaml")) as f:
+with open(os.path.join(pwd, "../settings.yaml")) as f:
     yaml_settings.update(yaml.safe_load(f))
 
 

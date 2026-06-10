@@ -1,0 +1,7 @@
+# Development Environment
+dev:
+  SQLALCHEMY_DATABASE_URI: "postgresql+asyncpg://postgres:password@localhost:5432/dev_db"
+
+# Production Environment
+prod:
+  SQLALCHEMY_DATABASE_URI: "postgresql+asyncpg://user:secure_password@prod-db-host:5432/prod_db"
